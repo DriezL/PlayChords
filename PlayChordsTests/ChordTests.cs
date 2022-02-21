@@ -17,10 +17,10 @@ namespace PlayChords.Tests
         [DataRow("D", "D - Ges - A")]
         [DataRow("Es", "Es - G - Bes")]
         [DataRow("As", "As - C - Es")]
-        public void MajeurAkkoordTest(string note, string verwacht)
+        public void MajeurAkkoordTest(string baseNote, string expected)
         {
             var sut = new Chord();
-            Assert.AreEqual(verwacht, sut.MajeurAkkoord(note));
+            Assert.AreEqual(expected, sut.MajeurAkkoord(baseNote));
         }
 
         [DataTestMethod]
@@ -29,10 +29,10 @@ namespace PlayChords.Tests
         [DataRow("D", "D - F - A")]
         [DataRow("Es", "Es - Ges - Bes")]
         [DataRow("As", "As - B - Es")]
-        public void MineurAkkoordTest(string note, string verwacht)
+        public void MineurAkkoordTest(string baseNote, string expected)
         {
             var sut = new Chord();
-            Assert.AreEqual(verwacht, sut.MineurAkkoord(note));
+            Assert.AreEqual(expected, sut.MineurAkkoord(baseNote));
         }
 
     }

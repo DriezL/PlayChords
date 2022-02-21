@@ -23,12 +23,22 @@ namespace PlayChords
             allNotes.Add("As");
         }
 
-        public string MajeurAkkoord(string note)
+        public string MajeurAkkoord(string note, bool dominant)
         {
             var index1 = allNotes.IndexOf(note);
-            Math.DivRem((index1 + 4), 12, out int index2);
-            Math.DivRem((index2 + 3), 12, out int index3);
-            return $"{note} - {allNotes[index2]} - {allNotes[index3]}";
+            if (dominant)
+            {
+                Math.DivRem((index1 + 4), 12, out int index2);
+                Math.DivRem((index2 + 3), 12, out int index3);
+                Math.DivRem((index3 + 2), 12, out int index4);
+                return $"{note} - {allNotes[index2]} - {allNotes[index3]} - {allNotes[index4]}";
+            }
+            else
+            {
+                Math.DivRem((index1 + 4), 12, out int index2);
+                Math.DivRem((index2 + 3), 12, out int index3);
+                return $"{note} - {allNotes[index2]} - {allNotes[index3]}";
+            }
         }
 
         public string Doe()
