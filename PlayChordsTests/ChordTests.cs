@@ -142,6 +142,7 @@ namespace PlayChords.Tests
         public void GeefHalfVermAkkoordTest2()
         {
             var sut = new Chord();
+
             Assert.ThrowsException<ArgumentException>(() => sut.GeefAkkoord("C", false, false, true, false, true));
         }
 
