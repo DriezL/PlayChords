@@ -50,12 +50,16 @@ namespace PlayChords
             int b = 4;
             int c = 7;
             int d = 0;
-            if (c == 7 || d != 0)
+            if (baseNote == "C")
             {
                 d = 11;
             }
-            if (mineur && !dominant && !verminderd && !halfVerminderd)
+            if (mineur)
             {
+                sus = false;
+                dominant = false;
+                verminderd = false;
+                halfVerminderd = false;
                 b--;
                 d--;
             }
