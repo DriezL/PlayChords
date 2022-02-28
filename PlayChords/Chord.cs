@@ -44,26 +44,30 @@ namespace PlayChords
 
 
 
-        public string GeefAkkoord(string baseNote, bool mineur, bool sus, bool dominant, bool verminderd)
+        public string GeefAkkoord(string baseNote, bool mineur, bool sus, bool dominant, bool verminderd, bool halfVerminderd)
         {
             var index1 = allNotes.IndexOf(baseNote);
             int b = 4;
             int c = 7;
-            int d = 11;
-            if (mineur)
+            int d = 0;
+            if (c == 7 || d != 0)
+            {
+                d = 11;
+            }
+            if (mineur && !dominant && !verminderd && !halfVerminderd)
             {
                 b--;
                 d--;
             }
-            if (sus)
+            if (sus && !mineur)
             {
                 c -= 2;
             }
-            if (dominant)
+            if (dominant && !mineur)
             {
                 d -= 1;
             }
-            if (verminderd)
+            if (verminderd && !halfVerminderd)
             {
                 if (!mineur)
                 {
@@ -84,6 +88,22 @@ namespace PlayChords
                 else
                 {
                     d -= 2;
+                }
+            }
+            if (halfVerminderd && !verminderd)
+            {
+                if (!mineur)
+                {
+                    b--;
+                    c--;
+                }
+                if (dominant)
+                {
+                    throw new ArgumentException("halfverminderd kan niet samen met dominant");
+                }
+                else
+                {
+                    d -= 1;
                 }
             }
 

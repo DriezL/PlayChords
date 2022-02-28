@@ -83,7 +83,7 @@ namespace PlayChords.Tests
         public void GeefMajAkkoordTest()
         {
             var sut = new Chord();
-            Assert.AreEqual("C - E - G - B", sut.GeefAkkoord("C", false, false, false, false));
+            Assert.AreEqual("C - E - G - B", sut.GeefAkkoord("C", false, false, false, false, false));
         }
 
 
@@ -92,7 +92,7 @@ namespace PlayChords.Tests
         public void GeefMinAkkoordTest()
         {
             var sut = new Chord();
-            Assert.AreEqual("C - Es - G - Bes", sut.GeefAkkoord("C", true, false, false, false));
+            Assert.AreEqual("C - Es - G - Bes", sut.GeefAkkoord("C", true, false, false, false, false));
         }
 
 
@@ -102,7 +102,7 @@ namespace PlayChords.Tests
         public void GeefSusAkkoordTest()
         {
             var sut = new Chord();
-            Assert.AreEqual("C - E - F - B", sut.GeefAkkoord("C", false, true, false, false));
+            Assert.AreEqual("C - E - F - B", sut.GeefAkkoord("C", false, true, false, false, false));
         }
 
 
@@ -110,7 +110,7 @@ namespace PlayChords.Tests
         public void GeefDomAkkoordTest()
         {
             var sut = new Chord();
-            Assert.AreEqual("C - E - G - Bes", sut.GeefAkkoord("C", false, false, true, false));
+            Assert.AreEqual("C - E - G - Bes", sut.GeefAkkoord("C", false, false, true, false, false));
         }
 
 
@@ -118,7 +118,7 @@ namespace PlayChords.Tests
         public void GeefVermAkkoordTest()
         {
             var sut = new Chord();
-            Assert.AreEqual("C - Es - Ges - A", sut.GeefAkkoord("C", false, false, false, true));
+            Assert.AreEqual("C - Es - Ges - A", sut.GeefAkkoord("C", false, false, false, true, false));
         }
 
 
@@ -126,7 +126,23 @@ namespace PlayChords.Tests
         public void GeefVermAkkoordTest2()
         {
             var sut = new Chord();
-            Assert.AreEqual("C - Es - Ges - A", sut.GeefAkkoord("C", false, true, true, true));
+            Assert.AreEqual("C - Es - Ges - A", sut.GeefAkkoord("C", false, true, true, true, false));
+        }
+
+
+
+        [TestMethod()]
+        public void GeefHalfVermAkkoordTest()
+        {
+            var sut = new Chord();
+            Assert.AreEqual("C - Es - Ges - Bes", sut.GeefAkkoord("C", false, false, false, false, true));
+        }
+
+        [TestMethod()]
+        public void GeefHalfVermAkkoordTest2()
+        {
+            var sut = new Chord();
+            Assert.ThrowsException<ArgumentException>(() => sut.GeefAkkoord("C", false, false, true, false, true));
         }
 
     }
